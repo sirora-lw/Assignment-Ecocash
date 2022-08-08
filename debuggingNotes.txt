@@ -1,0 +1,76 @@
+Sirora
+Ecocash Assignment
+Debugging Notes with corrections
+*************************************************************************************************************************************************
+*************************************************************************************************************************************************
+
+1.econet-utils
+-Error on Logger
+Non-static field logger cannot be referenced from a static context
+
+Solved by:
+Changing variable "logger" to static variable  
+-------------------------------------------------------------------------------------------------------------------------------------------------
+2. 'persist()' in 'com.econetwireless.epay.dao.subscriberrequest.api.SubscriberRequestDao' cannot be applied to '(com.econetwireless.epay.domain.SubscriberRequest)'
+Solved by: Replaced 'persist()' 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+3. MobileNumberUtils
+Method ‘isInitiatorSameAsBeneficiary’ is never used
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.intelligent-network-api
+Error - log4j dependencies not found
+
+Solved by:
+Added log4j in pom file with the same version as parent module.
+Added path variable.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+5.electronic-payments-domain
+Error - @PreInsert annotation is not found. This class does not exists in the hibernate persistence library hence the error.
+
+Solved by:
+Changed @PreInsert to @PrePersist
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+6.Error (log4j2.xml)
+Error1 - log path error
+
+Solved by:
+Fixed the configurations
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+7.intelligent-network-api
+partnerCode parameter not annotated.
+Solved
+-------------------------------------------------------------------------------------------------------------------------------------------------
+8. electronic-payments-api
+Solved by:
+Added @Autowired annotation in EpayResource for EpayRequestProcessor & ReportingProcessor.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+9. MobileNumberUtils String.replaceAll() used for simple text patterns
+Solved by: String.replaceAll() replaced by String.replace()
+-------------------------------------------------------------------------------------------------------------------------------------------------
+10.electronic-payments-domain
+Error - Named query is incorrect 
+
+Solved by:
+Changed 'Request' with SubscriberRequest
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+11.electronic-business-payments
+Error1 - Used subscriberRequestDao.persist() to save SubscriberRequest. The persist() method is not defined in subscriberRequestDao repository.
+Error2 - Used subscriberRequestDao.update() to update SubscriberRequest. The update() method is not defined in subscriberRequestDao repository.
+
+Solved by:
+Used the save() of subscriberRequestDao repository to insert and update SubscriberRequest.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
